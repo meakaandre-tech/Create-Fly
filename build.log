@@ -1,0 +1,1111 @@
+Downloading https://services.gradle.org/distributions/gradle-9.5.1-bin.zip
+.............10%.............20%..............30%.............40%.............50%..............60%.............70%..............80%.............90%.............100%
+
+Welcome to Gradle 9.5.1!
+
+Here are the highlights of this release:
+ - Task provenance in reports and failure messages
+ - Type-safe accessors for precompiled Kotlin Settings plugins
+
+For more details see https://docs.gradle.org/9.5.1/release-notes.html
+
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.5.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :
+Fabric Loom: 1.17.21
+
+> Task :compileJava
+src/main/java/com/zurrtum/create/content/trains/entity/Train.java:53: error: cannot find symbol
+import net.minecraft.world.level.block.entity.FuelValues;
+                                             ^
+  symbol:   class FuelValues
+  location: package net.minecraft.world.level.block.entity
+src/main/java/com/zurrtum/create/catnip/levelWrappers/WrappedLevel.java:21: error: cannot find symbol
+import net.minecraft.world.item.alchemy.PotionBrewing;
+                                       ^
+  symbol:   class PotionBrewing
+  location: package net.minecraft.world.item.alchemy
+src/main/java/com/zurrtum/create/catnip/levelWrappers/WrappedLevel.java:28: error: cannot find symbol
+import net.minecraft.world.level.block.entity.FuelValues;
+                                             ^
+  symbol:   class FuelValues
+  location: package net.minecraft.world.level.block.entity
+src/main/java/com/zurrtum/create/catnip/levelWrappers/WrappedLevel.java:308: error: cannot find symbol
+    public PotionBrewing potionBrewing() {
+           ^
+  symbol:   class PotionBrewing
+  location: class WrappedLevel
+src/main/java/com/zurrtum/create/catnip/levelWrappers/WrappedLevel.java:313: error: cannot find symbol
+    public FuelValues fuelValues() {
+           ^
+  symbol:   class FuelValues
+  location: class WrappedLevel
+src/main/java/com/zurrtum/create/content/kinetics/mixer/PotionRecipe.java:28: error: cannot find symbol
+import net.minecraft.world.item.alchemy.PotionBrewing;
+                                       ^
+  symbol:   class PotionBrewing
+  location: package net.minecraft.world.item.alchemy
+src/main/java/com/zurrtum/create/infrastructure/worldgen/LayerPattern.java:12: error: package net.minecraft.world.level.levelgen.feature.configurations does not exist
+import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
+                                                                ^
+src/main/java/com/zurrtum/create/infrastructure/worldgen/LayerPattern.java:113: error: package OreConfiguration does not exist
+            private final List<List<OreConfiguration.TargetBlockState>> targets = new ArrayList<>();
+                                                    ^
+src/main/java/com/zurrtum/create/infrastructure/worldgen/LayerPattern.java:89: error: package OreConfiguration does not exist
+        public final List<List<OreConfiguration.TargetBlockState>> targets;
+                                               ^
+src/main/java/com/zurrtum/create/infrastructure/worldgen/LayerPattern.java:94: error: package OreConfiguration does not exist
+        public Layer(List<List<OreConfiguration.TargetBlockState>> targets, int minSize, int maxSize, int weight) {
+                                               ^
+src/main/java/com/zurrtum/create/infrastructure/worldgen/LayerPattern.java:101: error: package OreConfiguration does not exist
+        public List<OreConfiguration.TargetBlockState> rollBlock(RandomSource random) {
+                                    ^
+src/main/java/com/zurrtum/create/infrastructure/worldgen/LayeredOreConfiguration.java:5: error: package net.minecraft.world.level.levelgen.feature.configurations does not exist
+import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+                                                                ^
+src/main/java/com/zurrtum/create/infrastructure/worldgen/LayeredOreConfiguration.java:9: error: cannot find symbol
+public class LayeredOreConfiguration implements FeatureConfiguration {
+                                                ^
+  symbol: class FeatureConfiguration
+src/main/java/com/zurrtum/create/infrastructure/worldgen/AllFeatures.java:7: error: package net.minecraft.world.level.levelgen.feature.configurations does not exist
+import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+                                                                ^
+src/main/java/com/zurrtum/create/infrastructure/worldgen/LayeredOreFeature.java:14: error: cannot find symbol
+import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
+                                                 ^
+  symbol:   class FeaturePlaceContext
+  location: package net.minecraft.world.level.levelgen.feature
+src/main/java/com/zurrtum/create/infrastructure/worldgen/LayeredOreFeature.java:15: error: package net.minecraft.world.level.levelgen.feature.configurations does not exist
+import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
+                                                                ^
+src/main/java/com/zurrtum/create/infrastructure/worldgen/LayeredOreFeature.java:23: error: no interface expected here
+public class LayeredOreFeature extends Feature<LayeredOreConfiguration> {
+                                       ^
+src/main/java/com/zurrtum/create/infrastructure/worldgen/LayeredOreFeature.java:23: error: type Feature does not take parameters
+public class LayeredOreFeature extends Feature<LayeredOreConfiguration> {
+                                              ^
+src/main/java/com/zurrtum/create/infrastructure/worldgen/AllFeatures.java:14: error: cannot find symbol
+    private static <C extends FeatureConfiguration, F extends Feature<C>> F register(String name, F feature) {
+                              ^
+  symbol:   class FeatureConfiguration
+  location: class AllFeatures
+src/main/java/com/zurrtum/create/infrastructure/worldgen/AllFeatures.java:14: error: type Feature does not take parameters
+    private static <C extends FeatureConfiguration, F extends Feature<C>> F register(String name, F feature) {
+                                                                     ^
+src/main/java/com/zurrtum/create/infrastructure/worldgen/LayeredOreFeature.java:35: error: cannot find symbol
+    public boolean place(FeaturePlaceContext<LayeredOreConfiguration> pContext) {
+                         ^
+  symbol:   class FeaturePlaceContext
+  location: class LayeredOreFeature
+src/main/java/com/zurrtum/create/infrastructure/worldgen/LayeredOreFeature.java:217: error: package OreConfiguration does not exist
+        OreConfiguration.TargetBlockState pTargetState,
+                        ^
+src/main/java/com/zurrtum/create/infrastructure/worldgen/AllPlacementModifiers.java:8: error: cannot find symbol
+import net.minecraft.world.level.levelgen.placement.PlacementModifierType;
+                                                   ^
+  symbol:   class PlacementModifierType
+  location: package net.minecraft.world.level.levelgen.placement
+src/main/java/com/zurrtum/create/infrastructure/worldgen/AllPlacementModifiers.java:13: error: cannot find symbol
+    public static final PlacementModifierType<ConfigPlacementFilter> CONFIG_FILTER = register(
+                        ^
+  symbol:   class PlacementModifierType
+  location: class AllPlacementModifiers
+src/main/java/com/zurrtum/create/infrastructure/worldgen/ConfigPlacementFilter.java:9: error: cannot find symbol
+import net.minecraft.world.level.levelgen.placement.PlacementModifierType;
+                                                   ^
+  symbol:   class PlacementModifierType
+  location: package net.minecraft.world.level.levelgen.placement
+src/main/java/com/zurrtum/create/infrastructure/worldgen/ConfigPlacementFilter.java:11: error: no interface expected here
+public class ConfigPlacementFilter extends PlacementFilter {
+                                           ^
+src/main/java/com/zurrtum/create/infrastructure/worldgen/AllPlacementModifiers.java:18: error: cannot find symbol
+    private static <P extends PlacementModifier> PlacementModifierType<P> register(String id, MapCodec<P> codec) {
+                                                 ^
+  symbol:   class PlacementModifierType
+  location: class AllPlacementModifiers
+src/main/java/com/zurrtum/create/infrastructure/worldgen/ConfigPlacementFilter.java:21: error: cannot find symbol
+    public PlacementModifierType<?> type() {
+           ^
+  symbol:   class PlacementModifierType
+  location: class ConfigPlacementFilter
+src/main/java/com/zurrtum/create/infrastructure/worldgen/AllConfiguredFeatures.java:6: error: cannot find symbol
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+                                                 ^
+  symbol:   class ConfiguredFeature
+  location: package net.minecraft.world.level.levelgen.feature
+src/main/java/com/zurrtum/create/infrastructure/worldgen/AllConfiguredFeatures.java:11: error: cannot find symbol
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ZINC_ORE = register("zinc_ore");
+                                    ^
+  symbol:   class ConfiguredFeature
+  location: class AllConfiguredFeatures
+src/main/java/com/zurrtum/create/infrastructure/worldgen/AllConfiguredFeatures.java:12: error: cannot find symbol
+    public static final ResourceKey<ConfiguredFeature<?, ?>> STRIATED_ORES_OVERWORLD = register(
+                                    ^
+  symbol:   class ConfiguredFeature
+  location: class AllConfiguredFeatures
+src/main/java/com/zurrtum/create/infrastructure/worldgen/AllConfiguredFeatures.java:14: error: cannot find symbol
+    public static final ResourceKey<ConfiguredFeature<?, ?>> STRIATED_ORES_NETHER = register("striated_ores_nether");
+                                    ^
+  symbol:   class ConfiguredFeature
+  location: class AllConfiguredFeatures
+src/main/java/com/zurrtum/create/infrastructure/worldgen/AllConfiguredFeatures.java:16: error: cannot find symbol
+    public static ResourceKey<ConfiguredFeature<?, ?>> register(String id) {
+                              ^
+  symbol:   class ConfiguredFeature
+  location: class AllConfiguredFeatures
+src/main/java/com/zurrtum/create/mixin/FuelValuesMixin.java:6: error: cannot find symbol
+import net.minecraft.world.level.block.entity.FuelValues;
+                                             ^
+  symbol:   class FuelValues
+  location: package net.minecraft.world.level.block.entity
+src/main/java/com/zurrtum/create/mixin/FuelValuesMixin.java:13: error: package FuelValues does not exist
+    private static FuelValues register(FuelValues.Builder builder, Operation<FuelValues> original) {
+                                                 ^
+src/main/java/com/zurrtum/create/mixin/FuelValuesMixin.java:13: error: cannot find symbol
+    private static FuelValues register(FuelValues.Builder builder, Operation<FuelValues> original) {
+                                                                             ^
+  symbol:   class FuelValues
+  location: class FuelValuesMixin
+src/main/java/com/zurrtum/create/mixin/FuelValuesMixin.java:13: error: cannot find symbol
+    private static FuelValues register(FuelValues.Builder builder, Operation<FuelValues> original) {
+                   ^
+  symbol:   class FuelValues
+  location: class FuelValuesMixin
+src/main/java/com/zurrtum/create/catnip/levelWrappers/SchematicChunkSource.java:21: error: cannot find symbol
+import net.minecraft.world.item.alchemy.PotionBrewing;
+                                       ^
+  symbol:   class PotionBrewing
+  location: package net.minecraft.world.item.alchemy
+src/main/java/com/zurrtum/create/catnip/levelWrappers/SchematicChunkSource.java:30: error: cannot find symbol
+import net.minecraft.world.level.block.entity.FuelValues;
+                                             ^
+  symbol:   class FuelValues
+  location: package net.minecraft.world.level.block.entity
+src/main/java/com/zurrtum/create/catnip/levelWrappers/SchematicChunkSource.java:198: error: cannot find symbol
+            public PotionBrewing potionBrewing() {
+                   ^
+  symbol:   class PotionBrewing
+  location: class DummyLevel
+src/main/java/com/zurrtum/create/catnip/levelWrappers/SchematicChunkSource.java:203: error: cannot find symbol
+            public FuelValues fuelValues() {
+                   ^
+  symbol:   class FuelValues
+  location: class DummyLevel
+src/main/java/com/zurrtum/create/mixin/FuelValuesMixin.java:10: error: cannot find symbol
+@Mixin(FuelValues.class)
+       ^
+  symbol: class FuelValues
+src/main/java/com/zurrtum/create/content/trains/entity/Train.java:1225: error: cannot find symbol
+        FuelValues fuelRegistry = world.fuelValues();
+        ^
+  symbol:   class FuelValues
+  location: class Train
+src/main/java/com/zurrtum/create/content/trains/entity/Train.java:1225: error: cannot find symbol
+        FuelValues fuelRegistry = world.fuelValues();
+                                       ^
+  symbol:   method fuelValues()
+  location: variable world of type Level
+src/main/java/com/zurrtum/create/infrastructure/fluids/FluidStack.java:148: error: incompatible types: Reference2ObjectMap<DataComponentType<?>,Object> cannot be converted to Reference2ObjectMap<DataComponentType<?>,Optional<?>>
+            Reference2ObjectMap<DataComponentType<?>, Optional<?>> stackComponentMap = stackComponents.patch;
+                                                                                                      ^
+src/main/java/com/zurrtum/create/infrastructure/fluids/FluidStack.java:149: error: incompatible types: Reference2ObjectMap<DataComponentType<?>,Object> cannot be converted to Reference2ObjectMap<DataComponentType<?>,Optional<?>>
+            Reference2ObjectMap<DataComponentType<?>, Optional<?>> otherStackComponentMap = otherStackComponents.patch;
+                                                                                                                ^
+src/main/java/com/zurrtum/create/infrastructure/items/ContainerExtension.java:328: error: incompatible types: Reference2ObjectMap<DataComponentType<?>,Object> cannot be converted to Reference2ObjectMap<DataComponentType<?>,Optional<?>>
+            Reference2ObjectMap<DataComponentType<?>, Optional<?>> stackComponentMap = stackComponents.patch;
+                                                                                                      ^
+src/main/java/com/zurrtum/create/infrastructure/items/ContainerExtension.java:329: error: incompatible types: Reference2ObjectMap<DataComponentType<?>,Object> cannot be converted to Reference2ObjectMap<DataComponentType<?>,Optional<?>>
+            Reference2ObjectMap<DataComponentType<?>, Optional<?>> otherStackComponentMap = otherStackComponents.patch;
+                                                                                                                ^
+src/main/java/com/zurrtum/create/catnip/levelWrappers/WrappedLevel.java:307: error: method does not override or implement a method from a supertype
+    @Override
+    ^
+src/main/java/com/zurrtum/create/catnip/levelWrappers/WrappedLevel.java:309: error: cannot find symbol
+        return level.potionBrewing();
+                    ^
+  symbol:   method potionBrewing()
+  location: variable level of type Level
+src/main/java/com/zurrtum/create/catnip/levelWrappers/WrappedLevel.java:312: error: method does not override or implement a method from a supertype
+    @Override
+    ^
+src/main/java/com/zurrtum/create/catnip/levelWrappers/WrappedLevel.java:314: error: cannot find symbol
+        return level.fuelValues();
+                    ^
+  symbol:   method fuelValues()
+  location: variable level of type Level
+src/main/java/com/zurrtum/create/AllItemAttributeTypes.java:60: error: cannot find symbol
+    public static final ItemAttributeType FURNACE_FUEL = singleton("furnace_fuel", (s, w) -> w.fuelValues().isFuel(s));
+                                                                                              ^
+  symbol:   method fuelValues()
+  location: variable w of type Level
+src/main/java/com/zurrtum/create/AllItemAttributeTypes.java:84: error: cannot find symbol
+        s -> ComposterBlock.COMPOSTABLES.containsKey(s.getItem())
+                           ^
+  symbol:   variable COMPOSTABLES
+  location: class ComposterBlock
+src/main/java/com/zurrtum/create/content/processing/burner/BlazeBurnerBlockEntity.java:207: error: cannot find symbol
+            newBurnTime = level.fuelValues().burnDuration(itemStack);
+                               ^
+  symbol:   method fuelValues()
+  location: variable level of type Level
+src/main/java/com/zurrtum/create/content/processing/sequenced/SequencedAssemblyRecipe.java:95: error: incompatible types: Codec<List<Holder<Recipe<?>>>> cannot be converted to Codec<List<Recipe<?>>>
+        private static final Codec<List<Recipe<?>>> RECIPE_CODEC = CODEC.listOf();
+                                                                               ^
+src/main/java/com/zurrtum/create/content/processing/sequenced/SequencedAssemblyRecipe.java:142: error: incompatible types: cannot infer type arguments for Reference2ObjectArrayMap<>
+                Reference2ObjectMap<DataComponentType<?>, Optional<?>> transitionalComponents = new Reference2ObjectArrayMap<>(
+                                                                                                                            ^
+    reason: inference variable V has incompatible equality constraints Optional<?>,Object
+  where V is a type-variable:
+    V extends Object declared in class Reference2ObjectArrayMap
+src/main/java/com/zurrtum/create/content/processing/sequenced/SequencedAssemblyRecipe.java:147: error: incompatible types: Reference2ObjectMap<DataComponentType<?>,Optional<?>> cannot be converted to Reference2ObjectMap<DataComponentType<?>,Object>
+                    new DataComponentPatch(transitionalComponents)
+                                           ^
+src/main/java/com/zurrtum/create/content/processing/sequenced/SequencedAssemblyRecipe.java:212: error: incompatible types: Holder<Recipe<?>> cannot be converted to Recipe<?>
+                    Recipe<?> recipe = CODEC.parse(ops, object).getOrThrow();
+                                                                          ^
+src/main/java/com/zurrtum/create/content/kinetics/mixer/PotionRecipe.java:64: error: cannot find symbol
+        PotionBrewing potionBrewing = PotionBrewing.bootstrap(data.enabledFeatures);
+        ^
+  symbol:   class PotionBrewing
+  location: class PotionRecipe
+src/main/java/com/zurrtum/create/content/kinetics/mixer/PotionRecipe.java:64: error: cannot find symbol
+        PotionBrewing potionBrewing = PotionBrewing.bootstrap(data.enabledFeatures);
+                                      ^
+  symbol:   variable PotionBrewing
+  location: class PotionRecipe
+src/main/java/com/zurrtum/create/content/kinetics/mixer/PotionRecipe.java:77: error: package PotionBrewing does not exist
+            for (PotionBrewing.Mix<Potion> mix : potionBrewing.potionMixes) {
+                              ^
+src/main/java/com/zurrtum/create/content/kinetics/mixer/PotionRecipe.java:92: error: package PotionBrewing does not exist
+        for (PotionBrewing.Mix<Item> mix : potionBrewing.containerMixes) {
+                          ^
+src/main/java/com/zurrtum/create/content/logistics/packager/PackagerBlockEntity.java:648: error: incompatible types: boolean cannot be converted to SignTextSlot
+            SignText text = sign.getText(front);
+                                         ^
+src/main/java/com/zurrtum/create/foundation/utility/DynamicComponent.java:34: error: no suitable constructor found for CommandSourceStack(CommandSource,Vec3,Vec2,ServerLevel,LevelBasedPermissionSet,String,MutableComponent,MinecraftServer,<null>)
+        return new CommandSourceStack(
+               ^
+    constructor CommandSourceStack.CommandSourceStack(CommandSource,Vec3,Vec2,ServerLevel,PermissionSet,MinecraftServer,Entity) is not applicable
+      (actual and formal argument lists differ in length)
+    constructor CommandSourceStack.CommandSourceStack(CommandSource,Vec3,Vec2,ServerLevel,PermissionSet,Component,MinecraftServer) is not applicable
+      (actual and formal argument lists differ in length)
+    constructor CommandSourceStack.CommandSourceStack(CommandSource,Vec3,Vec2,ServerLevel,PermissionSet,NamesProvider,MinecraftServer,@org.jspecify.annotations.Nullable Entity) is not applicable
+      (actual and formal argument lists differ in length)
+    constructor CommandSourceStack.CommandSourceStack(CommandSource,Vec3,Vec2,ServerLevel,PermissionSet,NamesProvider,MinecraftServer,@org.jspecify.annotations.Nullable Entity,boolean,CommandResultCallback,Anchor,CommandSigningContext,TaskChainer) is not applicable
+      (actual and formal argument lists differ in length)
+src/main/java/com/zurrtum/create/foundation/pack/RuntimeDataGenerator.java:197: error: incompatible types: CuttingRecipe cannot be converted to Holder<Recipe<?>>
+                EmptyJsonOps.INSTANCE, new CuttingRecipe(
+                                       ^
+src/main/java/com/zurrtum/create/foundation/pack/RuntimeDataGenerator.java:228: error: incompatible types: Recipe<CAP#1> cannot be converted to Holder<Recipe<?>>
+        Recipe.CODEC.encodeStart(JsonOps.INSTANCE, recipe).ifSuccess(json -> {
+                                                   ^
+  where CAP#1 is a fresh type-variable:
+    CAP#1 extends RecipeInput from capture of ?
+src/main/java/com/zurrtum/create/foundation/pack/EmptyJsonOps.java:28: error: method does not override or implement a method from a supertype
+    @Override
+    ^
+src/main/java/com/zurrtum/create/foundation/recipe/ComponentsIngredient.java:75: error: cannot find symbol
+        for (Map.Entry<DataComponentType<?>, Optional<?>> entry : components.entrySet()) {
+                                                                            ^
+  symbol:   method entrySet()
+  location: variable components of type DataComponentPatch
+src/main/java/com/zurrtum/create/infrastructure/player/FakePlayerEntity.java:55: error: startSleeping(BlockPos) in FakePlayerEntity cannot override startSleeping(BlockPos) in ServerPlayer
+    public void startSleeping(BlockPos pos) {
+                ^
+  return type void is not compatible with boolean
+src/main/java/com/zurrtum/create/infrastructure/player/FakePlayerEntity.java:54: error: method does not override or implement a method from a supertype
+    @Override
+    ^
+src/main/java/com/zurrtum/create/infrastructure/player/FakePlayerEntity.java:64: error: method does not override or implement a method from a supertype
+    @Override
+    ^
+src/main/java/com/zurrtum/create/infrastructure/worldgen/LayerPattern.java:82: error: package OreConfiguration does not exist
+            Codec.list(Codec.list(OreConfiguration.TargetBlockState.CODEC)).fieldOf("targets")
+                                                  ^
+src/main/java/com/zurrtum/create/infrastructure/worldgen/LayerPattern.java:113: error: incompatible types: cannot infer type arguments for ArrayList<>
+            private final List<List<OreConfiguration.TargetBlockState>> targets = new ArrayList<>();
+                                                                                               ^
+    reason: inferred type does not conform to equality constraint(s)
+      inferred: Object
+      equality constraints(s): List<TargetBlockState>
+src/main/java/com/zurrtum/create/infrastructure/worldgen/LayerPattern.java:129: error: cannot find symbol
+                    targets.add(ImmutableList.of(OreConfiguration.target(
+                                                 ^
+  symbol:   variable OreConfiguration
+  location: class Builder
+src/main/java/com/zurrtum/create/infrastructure/worldgen/LayerPattern.java:151: error: cannot find symbol
+                    OreConfiguration.target(STONE_ORE_REPLACEABLES, stone),
+                    ^
+  symbol:   variable OreConfiguration
+  location: class Builder
+src/main/java/com/zurrtum/create/infrastructure/worldgen/LayerPattern.java:152: error: cannot find symbol
+                    OreConfiguration.target(DEEPSLATE_ORE_REPLACEABLES, deepslate)
+                    ^
+  symbol:   variable OreConfiguration
+  location: class Builder
+src/main/java/com/zurrtum/create/infrastructure/worldgen/AllFeatures.java:15: error: cannot find symbol
+        return Registry.register(BuiltInRegistries.FEATURE, Identifier.fromNamespaceAndPath(MOD_ID, name), feature);
+                                                  ^
+  symbol:   variable FEATURE
+  location: class BuiltInRegistries
+src/main/java/com/zurrtum/create/infrastructure/worldgen/LayeredOreFeature.java:34: error: method does not override or implement a method from a supertype
+    @Override
+    ^
+src/main/java/com/zurrtum/create/infrastructure/worldgen/LayeredOreFeature.java:127: error: cannot find symbol
+                        rampValue += layerDisplacementNoise.getValue(
+                                                           ^
+  symbol:   method getValue(float,float,float)
+  location: variable layerDisplacementNoise of type SimplexNoise
+src/main/java/com/zurrtum/create/infrastructure/worldgen/LayeredOreFeature.java:147: error: cannot find symbol
+                            (float) radiusNoise.getValue(
+                                               ^
+  symbol:   method getValue(float,float,float)
+  location: variable radiusNoise of type SimplexNoise
+src/main/java/com/zurrtum/create/infrastructure/worldgen/LayeredOreFeature.java:159: error: package OreConfiguration does not exist
+                        List<OreConfiguration.TargetBlockState> targetBlockStates = layer.rollBlock(random);
+                                             ^
+src/main/java/com/zurrtum/create/infrastructure/worldgen/LayeredOreFeature.java:175: error: package OreConfiguration does not exist
+                        for (OreConfiguration.TargetBlockState targetBlockState : targetBlockStates) {
+                                             ^
+src/main/java/com/zurrtum/create/infrastructure/worldgen/LayeredOreFeature.java:227: error: cannot find symbol
+        return !isAdjacentToAir(pAdjacentStateAccessor, pMatablePos);
+                ^
+  symbol:   method isAdjacentToAir(Function<BlockPos,BlockState>,MutableBlockPos)
+  location: class LayeredOreFeature
+src/main/java/com/zurrtum/create/infrastructure/worldgen/AllPlacementModifiers.java:13: error: method register in class AllPlacementModifiers cannot be applied to given types;
+    public static final PlacementModifierType<ConfigPlacementFilter> CONFIG_FILTER = register(
+                                                                                     ^
+  required: String,MapCodec<P>
+  found:    String,MapCodec<ConfigPlacementFilter>
+  reason: inference variable P has incompatible bounds
+    equality constraints: ConfigPlacementFilter
+    upper bounds: PlacementModifier
+  where P is a type-variable:
+    P extends PlacementModifier declared in method <P>register(String,MapCodec<P>)
+src/main/java/com/zurrtum/create/infrastructure/worldgen/AllPlacementModifiers.java:19: error: incompatible types: cannot infer type-variable(s) V,T
+        return Registry.register(
+                                ^
+    (argument mismatch; MapCodec is not a functional interface)
+  where V,T are type-variables:
+    V extends Object declared in method <V,T>register(Registry<V>,Identifier,T)
+    T extends V declared in method <V,T>register(Registry<V>,Identifier,T)
+src/main/java/com/zurrtum/create/infrastructure/worldgen/ConfigPlacementFilter.java:15: error: method does not override or implement a method from a supertype
+    @Override
+    ^
+src/main/java/com/zurrtum/create/infrastructure/worldgen/ConfigPlacementFilter.java:20: error: method does not override or implement a method from a supertype
+    @Override
+    ^
+src/main/java/com/zurrtum/create/infrastructure/worldgen/AllConfiguredFeatures.java:17: error: cannot find symbol
+        return ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath(MOD_ID, id));
+                                            ^
+  symbol:   variable CONFIGURED_FEATURE
+  location: class Registries
+src/main/java/com/zurrtum/create/mixin/BuiltInPackSourceMixin.java:103: error: no suitable method found for addDataPack(Consumer<Pack>,boolean,VanillaPackResources)
+        addDataPack(consumer, true, builder.build(info));
+        ^
+    method BuiltInPackSourceMixin.addDataPack(Consumer<Pack>,PackLocationInfo,List<Path>,Component,String,String...) is not applicable
+      (argument mismatch; boolean cannot be converted to PackLocationInfo)
+    method BuiltInPackSourceMixin.addDataPack(Consumer<Pack>,boolean,PackResources) is not applicable
+      (argument mismatch; VanillaPackResources cannot be converted to PackResources)
+src/main/java/com/zurrtum/create/mixin/BuiltInPackSourceMixin.java:108: error: <anonymous com.zurrtum.create.mixin.BuiltInPackSourceMixin$1> is not abstract and does not override abstract method openResources(PackLocationInfo,Metadata) in ResourcesSupplier
+        Pack.ResourcesSupplier packFactory = new Pack.ResourcesSupplier() {
+                                                                          ^
+src/main/java/com/zurrtum/create/mixin/BuiltInPackSourceMixin.java:109: error: method does not override or implement a method from a supertype
+            @Override
+            ^
+src/main/java/com/zurrtum/create/mixin/BuiltInPackSourceMixin.java:115: error: method does not override or implement a method from a supertype
+            @Override
+            ^
+src/main/java/com/zurrtum/create/catnip/nbt/NBTProcessors.java:46: error: cannot find symbol
+            SignText text = data.getCompound(key).flatMap(k -> CatnipCodecUtils.decode(SignText.DIRECT_CODEC, k))
+                                                                                               ^
+  symbol:   variable DIRECT_CODEC
+  location: class SignText
+src/main/java/com/zurrtum/create/catnip/nbt/NBTProcessors.java:47: error: incompatible types: Object cannot be converted to SignText
+                .orElse(null);
+                       ^
+src/main/java/com/zurrtum/create/catnip/levelWrappers/SchematicChunkSource.java:197: error: method does not override or implement a method from a supertype
+            @Override
+            ^
+src/main/java/com/zurrtum/create/catnip/levelWrappers/SchematicChunkSource.java:202: error: method does not override or implement a method from a supertype
+            @Override
+            ^
+src/main/java/com/zurrtum/create/content/redstone/displayLink/target/SignDisplayTarget.java:25: error: incompatible types: invalid method reference
+        Couple<SignText> signText = Couple.createWithContext(sign::getText);
+                                                             ^
+    incompatible types: Boolean cannot be converted to SignTextSlot
+src/main/java/com/zurrtum/create/content/redstone/displayLink/target/SignDisplayTarget.java:37: error: cannot find symbol
+            signText = signText.map(st -> st.setMessage(iFinal + line, Component.literal(content)));
+                                            ^
+  symbol:   method setMessage(int,MutableComponent)
+  location: variable st of type SignText
+src/main/java/com/zurrtum/create/content/redstone/displayLink/target/SignDisplayTarget.java:42: error: incompatible types: invalid method reference
+            signText.forEachWithContext(sign::setText);
+                                        ^
+    incompatible types: Boolean cannot be converted to SignTextSlot
+src/main/java/com/zurrtum/create/content/equipment/sandPaper/SandPaperItem.java:200: error: cannot find symbol
+        Optional<BlockState> newState = ((AxeItem) Items.DIAMOND_AXE).getStripped(state);
+                                          ^
+  symbol:   class AxeItem
+  location: class SandPaperItem
+src/main/java/com/zurrtum/create/content/equipment/TreeFertilizerItem.java:50: error: method performBonemeal in interface BonemealableBlock cannot be applied to given types;
+            bonemealableBlock.performBonemeal(
+                             ^
+  required: ServerLevel,RandomSource,BlockPos,BlockState,BonemealSource
+  found:    TreesDreamWorld,RandomSource,BlockPos,BlockState
+  reason: actual and formal argument lists differ in length
+src/main/java/com/zurrtum/create/AllBlocks.java:534: error: incompatible types: invalid method reference
+            .isSuffocating(Blocks::never).isViewBlocking(Blocks::never).mapColor(MapColor.COLOR_GRAY)
+                                                         ^
+    incompatible types: AABB cannot be converted to EntityType<?>
+src/main/java/com/zurrtum/create/AllBlocks.java:545: error: incompatible types: invalid method reference
+            .isSuffocating(Blocks::never).isViewBlocking(Blocks::never).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)
+                                                         ^
+    incompatible types: AABB cannot be converted to EntityType<?>
+src/main/java/com/zurrtum/create/AllBlocks.java:1103: error: incompatible types: invalid method reference
+            .isSuffocating(Blocks::never).isViewBlocking(Blocks::never).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)
+                                                         ^
+    incompatible types: AABB cannot be converted to EntityType<?>
+src/main/java/com/zurrtum/create/AllBlocks.java:1241: error: incompatible types: invalid method reference
+            .isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
+                                                         ^
+    incompatible types: AABB cannot be converted to EntityType<?>
+src/main/java/com/zurrtum/create/AllBlocks.java:1247: error: incompatible types: invalid method reference
+            .isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
+                                                         ^
+    incompatible types: AABB cannot be converted to EntityType<?>
+src/main/java/com/zurrtum/create/AllBlocks.java:1253: error: incompatible types: invalid method reference
+            .isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
+                                                         ^
+    incompatible types: AABB cannot be converted to EntityType<?>
+src/main/java/com/zurrtum/create/AllBlocks.java:1279: error: incompatible types: invalid method reference
+            .isRedstoneConductor(Blocks::never).isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
+                                                                                            ^
+    incompatible types: AABB cannot be converted to EntityType<?>
+src/main/java/com/zurrtum/create/AllBlocks.java:1285: error: incompatible types: invalid method reference
+            .isRedstoneConductor(Blocks::never).isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
+                                                                                            ^
+    incompatible types: AABB cannot be converted to EntityType<?>
+src/main/java/com/zurrtum/create/AllBlocks.java:1291: error: incompatible types: invalid method reference
+            .isRedstoneConductor(Blocks::never).isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
+                                                                                            ^
+    incompatible types: AABB cannot be converted to EntityType<?>
+src/main/java/com/zurrtum/create/AllBlocks.java:1297: error: incompatible types: invalid method reference
+            .isRedstoneConductor(Blocks::never).isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
+                                                                                            ^
+    incompatible types: AABB cannot be converted to EntityType<?>
+src/main/java/com/zurrtum/create/AllBlocks.java:1303: error: incompatible types: invalid method reference
+            .isRedstoneConductor(Blocks::never).isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
+                                                                                            ^
+    incompatible types: AABB cannot be converted to EntityType<?>
+src/main/java/com/zurrtum/create/AllBlocks.java:1309: error: incompatible types: invalid method reference
+            .isRedstoneConductor(Blocks::never).isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
+                                                                                            ^
+    incompatible types: AABB cannot be converted to EntityType<?>
+src/main/java/com/zurrtum/create/AllBlocks.java:1315: error: incompatible types: invalid method reference
+            .isRedstoneConductor(Blocks::never).isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
+                                                                                            ^
+    incompatible types: AABB cannot be converted to EntityType<?>
+src/main/java/com/zurrtum/create/AllBlocks.java:1321: error: incompatible types: invalid method reference
+            .isRedstoneConductor(Blocks::never).isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
+                                                                                            ^
+    incompatible types: AABB cannot be converted to EntityType<?>
+src/main/java/com/zurrtum/create/AllBlocks.java:1327: error: incompatible types: invalid method reference
+            .isRedstoneConductor(Blocks::never).isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
+                                                                                            ^
+    incompatible types: AABB cannot be converted to EntityType<?>
+src/main/java/com/zurrtum/create/AllBlocks.java:1333: error: incompatible types: invalid method reference
+            .isRedstoneConductor(Blocks::never).isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
+                                                                                            ^
+    incompatible types: AABB cannot be converted to EntityType<?>
+src/main/java/com/zurrtum/create/AllBlocks.java:1339: error: incompatible types: invalid method reference
+            .isRedstoneConductor(Blocks::never).isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
+                                                                                            ^
+    incompatible types: AABB cannot be converted to EntityType<?>
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+119 errors
+
+> Task :compileJava FAILED
+> Task :processResources
+> Task :processClientResources
+> Task :processIncludeJars
+> Task :sourcesJar
+> Task :processTestResources NO-SOURCE
+
+> Task :validateAccessWidener FAILED
+Could not find class (com/mojang/blaze3d/opengl/GlDevice) on line 2
+Could not find class (net/minecraft/world/item/alchemy/PotionBrewing$Mix) on line 12
+Could not find field (activeTexture:I) in class (com/mojang/blaze3d/opengl/GlStateManager) on line 18
+Could not find field (backend:Lcom/mojang/blaze3d/systems/GpuDeviceBackend;) in class (com/mojang/blaze3d/systems/GpuDevice) on line 19
+Could not find field (mainHandItem:Lnet/minecraft/world/item/ItemStack;) in class (net/minecraft/client/renderer/ItemInHandRenderer) on line 64
+Could not find field (offHandItem:Lnet/minecraft/world/item/ItemStack;) in class (net/minecraft/client/renderer/ItemInHandRenderer) on line 65
+Could not find field (BLOCK_SNIPPET:Lcom/mojang/blaze3d/pipeline/RenderPipeline$Snippet;) in class (net/minecraft/client/renderer/RenderPipelines) on line 66
+Could not find field (DEBUG_FILLED_SNIPPET:Lcom/mojang/blaze3d/pipeline/RenderPipeline$Snippet;) in class (net/minecraft/client/renderer/RenderPipelines) on line 67
+Could not find field (ENTITY_SNIPPET:Lcom/mojang/blaze3d/pipeline/RenderPipeline$Snippet;) in class (net/minecraft/client/renderer/RenderPipelines) on line 68
+Could not find field (GUI_SNIPPET:Lcom/mojang/blaze3d/pipeline/RenderPipeline$Snippet;) in class (net/minecraft/client/renderer/RenderPipelines) on line 69
+Could not find field (MATRICES_FOG_LIGHT_DIR_SNIPPET:Lcom/mojang/blaze3d/pipeline/RenderPipeline$Snippet;) in class (net/minecraft/client/renderer/RenderPipelines) on line 70
+Could not find field (MATRICES_FOG_SNIPPET:Lcom/mojang/blaze3d/pipeline/RenderPipeline$Snippet;) in class (net/minecraft/client/renderer/RenderPipelines) on line 71
+Could not find field (PARTICLE_SNIPPET:Lcom/mojang/blaze3d/pipeline/RenderPipeline$Snippet;) in class (net/minecraft/client/renderer/RenderPipelines) on line 72
+Could not find field (sprite:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;) in class (net/minecraft/client/renderer/SpriteCoordinateExpander) on line 79
+Could not find field (containerMixes:Ljava/util/List;) in class (net/minecraft/world/item/alchemy/PotionBrewing) on line 104
+Could not find field (containers:Ljava/util/List;) in class (net/minecraft/world/item/alchemy/PotionBrewing) on line 105
+Could not find field (potionMixes:Ljava/util/List;) in class (net/minecraft/world/item/alchemy/PotionBrewing) on line 106
+Could not find method (getBoundingBoxForCulling(Lnet/minecraft/world/entity/Entity;)Lnet/minecraft/world/phys/AABB;) in class (net/minecraft/client/renderer/entity/EntityRenderer) on line 162
+Could not find method (isContainer(Lnet/minecraft/world/item/ItemStack;)Z) in class (net/minecraft/world/item/alchemy/PotionBrewing) on line 186
+Could not find method (getStripped(Lnet/minecraft/world/level/block/state/BlockState;)Ljava/util/Optional;) in class (net/minecraft/world/item/AxeItem) on line 187
+Could not find field (GLOBALS_SNIPPET:Lcom/mojang/blaze3d/pipeline/RenderPipeline$Snippet;) in class (net/minecraft/client/renderer/RenderPipelines) on line 255
+Could not find field (pipeline:Lcom/mojang/blaze3d/pipeline/RenderPipeline;) in class (net/minecraft/client/renderer/rendertype/RenderSetup) on line 270
+Could not find field (texture:Lcom/mojang/blaze3d/textures/GpuTexture;) in class (net/minecraft/client/gui/render/pip/PictureInPictureRenderer) on line 271
+Could not find field (textureView:Lcom/mojang/blaze3d/textures/GpuTextureView;) in class (net/minecraft/client/gui/render/pip/PictureInPictureRenderer) on line 273
+Could not find field (depthTextureView:Lcom/mojang/blaze3d/textures/GpuTextureView;) in class (net/minecraft/client/gui/render/pip/PictureInPictureRenderer) on line 274
+access-widener validation failed for create.classtweaker
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1790899128111.json
+
+[Incubating] Problems report is available at: file://build/reports/problems/problems-report.html
+
+FAILURE: Build completed with 2 failures.
+
+1: Task failed with an exception.
+-----------
+* What went wrong:
+Execution failed for task ':compileJava' (registered by plugin class 'org.gradle.api.plugins.JavaBasePlugin').
+> Compilation failed; see the compiler output below.
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/LayeredOreFeature.java:23: error: type Feature does not take parameters
+  public class LayeredOreFeature extends Feature<LayeredOreConfiguration> {
+                                                ^
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/AllFeatures.java:14: error: type Feature does not take parameters
+      private static <C extends FeatureConfiguration, F extends Feature<C>> F register(String name, F feature) {
+                                                                       ^
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/AllPlacementModifiers.java:13: error: method register in class AllPlacementModifiers cannot be applied to given types;
+      public static final PlacementModifierType<ConfigPlacementFilter> CONFIG_FILTER = register(
+                                                                                       ^
+    required: String,MapCodec<P>
+    found:    String,MapCodec<ConfigPlacementFilter>
+    reason: inference variable P has incompatible bounds
+      equality constraints: ConfigPlacementFilter
+      upper bounds: PlacementModifier
+    where P is a type-variable:
+      P extends PlacementModifier declared in method <P>register(String,MapCodec<P>)
+  src/main/java/com/zurrtum/create/content/equipment/TreeFertilizerItem.java:50: error: method performBonemeal in interface BonemealableBlock cannot be applied to given types;
+              bonemealableBlock.performBonemeal(
+                               ^
+    required: ServerLevel,RandomSource,BlockPos,BlockState,BonemealSource
+    found:    TreesDreamWorld,RandomSource,BlockPos,BlockState
+    reason: actual and formal argument lists differ in length
+  src/main/java/com/zurrtum/create/foundation/utility/DynamicComponent.java:34: error: no suitable constructor found for CommandSourceStack(CommandSource,Vec3,Vec2,ServerLevel,LevelBasedPermissionSet,String,MutableComponent,MinecraftServer,<null>)
+          return new CommandSourceStack(
+                 ^
+      constructor CommandSourceStack.CommandSourceStack(CommandSource,Vec3,Vec2,ServerLevel,PermissionSet,MinecraftServer,Entity) is not applicable
+        (actual and formal argument lists differ in length)
+      constructor CommandSourceStack.CommandSourceStack(CommandSource,Vec3,Vec2,ServerLevel,PermissionSet,Component,MinecraftServer) is not applicable
+        (actual and formal argument lists differ in length)
+      constructor CommandSourceStack.CommandSourceStack(CommandSource,Vec3,Vec2,ServerLevel,PermissionSet,NamesProvider,MinecraftServer,@org.jspecify.annotations.Nullable Entity) is not applicable
+        (actual and formal argument lists differ in length)
+      constructor CommandSourceStack.CommandSourceStack(CommandSource,Vec3,Vec2,ServerLevel,PermissionSet,NamesProvider,MinecraftServer,@org.jspecify.annotations.Nullable Entity,boolean,CommandResultCallback,Anchor,CommandSigningContext,TaskChainer) is not applicable
+        (actual and formal argument lists differ in length)
+  src/main/java/com/zurrtum/create/mixin/BuiltInPackSourceMixin.java:103: error: no suitable method found for addDataPack(Consumer<Pack>,boolean,VanillaPackResources)
+          addDataPack(consumer, true, builder.build(info));
+          ^
+      method BuiltInPackSourceMixin.addDataPack(Consumer<Pack>,PackLocationInfo,List<Path>,Component,String,String...) is not applicable
+        (argument mismatch; boolean cannot be converted to PackLocationInfo)
+      method BuiltInPackSourceMixin.addDataPack(Consumer<Pack>,boolean,PackResources) is not applicable
+        (argument mismatch; VanillaPackResources cannot be converted to PackResources)
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/LayeredOreFeature.java:23: error: no interface expected here
+  public class LayeredOreFeature extends Feature<LayeredOreConfiguration> {
+                                         ^
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/ConfigPlacementFilter.java:11: error: no interface expected here
+  public class ConfigPlacementFilter extends PlacementFilter {
+                                             ^
+  Note: Recompile with -Xlint:deprecation for details.
+  src/main/java/com/zurrtum/create/content/trains/entity/Train.java:53: error: cannot find symbol
+  import net.minecraft.world.level.block.entity.FuelValues;
+                                               ^
+    symbol:   class FuelValues
+    location: package net.minecraft.world.level.block.entity
+  src/main/java/com/zurrtum/create/catnip/levelWrappers/WrappedLevel.java:21: error: cannot find symbol
+  import net.minecraft.world.item.alchemy.PotionBrewing;
+                                         ^
+    symbol:   class PotionBrewing
+    location: package net.minecraft.world.item.alchemy
+  src/main/java/com/zurrtum/create/catnip/levelWrappers/WrappedLevel.java:28: error: cannot find symbol
+  import net.minecraft.world.level.block.entity.FuelValues;
+                                               ^
+    symbol:   class FuelValues
+    location: package net.minecraft.world.level.block.entity
+  src/main/java/com/zurrtum/create/catnip/levelWrappers/WrappedLevel.java:308: error: cannot find symbol
+      public PotionBrewing potionBrewing() {
+             ^
+    symbol:   class PotionBrewing
+    location: class WrappedLevel
+  src/main/java/com/zurrtum/create/catnip/levelWrappers/WrappedLevel.java:313: error: cannot find symbol
+      public FuelValues fuelValues() {
+             ^
+    symbol:   class FuelValues
+    location: class WrappedLevel
+  src/main/java/com/zurrtum/create/content/kinetics/mixer/PotionRecipe.java:28: error: cannot find symbol
+  import net.minecraft.world.item.alchemy.PotionBrewing;
+                                         ^
+    symbol:   class PotionBrewing
+    location: package net.minecraft.world.item.alchemy
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/LayeredOreFeature.java:14: error: cannot find symbol
+  import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
+                                                   ^
+    symbol:   class FeaturePlaceContext
+    location: package net.minecraft.world.level.levelgen.feature
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/AllFeatures.java:14: error: cannot find symbol
+      private static <C extends FeatureConfiguration, F extends Feature<C>> F register(String name, F feature) {
+                                ^
+    symbol:   class FeatureConfiguration
+    location: class AllFeatures
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/LayeredOreFeature.java:35: error: cannot find symbol
+      public boolean place(FeaturePlaceContext<LayeredOreConfiguration> pContext) {
+                           ^
+    symbol:   class FeaturePlaceContext
+    location: class LayeredOreFeature
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/AllPlacementModifiers.java:8: error: cannot find symbol
+  import net.minecraft.world.level.levelgen.placement.PlacementModifierType;
+                                                     ^
+    symbol:   class PlacementModifierType
+    location: package net.minecraft.world.level.levelgen.placement
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/AllPlacementModifiers.java:13: error: cannot find symbol
+      public static final PlacementModifierType<ConfigPlacementFilter> CONFIG_FILTER = register(
+                          ^
+    symbol:   class PlacementModifierType
+    location: class AllPlacementModifiers
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/ConfigPlacementFilter.java:9: error: cannot find symbol
+  import net.minecraft.world.level.levelgen.placement.PlacementModifierType;
+                                                     ^
+    symbol:   class PlacementModifierType
+    location: package net.minecraft.world.level.levelgen.placement
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/AllPlacementModifiers.java:18: error: cannot find symbol
+      private static <P extends PlacementModifier> PlacementModifierType<P> register(String id, MapCodec<P> codec) {
+                                                   ^
+    symbol:   class PlacementModifierType
+    location: class AllPlacementModifiers
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/ConfigPlacementFilter.java:21: error: cannot find symbol
+      public PlacementModifierType<?> type() {
+             ^
+    symbol:   class PlacementModifierType
+    location: class ConfigPlacementFilter
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/AllConfiguredFeatures.java:6: error: cannot find symbol
+  import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+                                                   ^
+    symbol:   class ConfiguredFeature
+    location: package net.minecraft.world.level.levelgen.feature
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/AllConfiguredFeatures.java:11: error: cannot find symbol
+      public static final ResourceKey<ConfiguredFeature<?, ?>> ZINC_ORE = register("zinc_ore");
+                                      ^
+    symbol:   class ConfiguredFeature
+    location: class AllConfiguredFeatures
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/AllConfiguredFeatures.java:12: error: cannot find symbol
+      public static final ResourceKey<ConfiguredFeature<?, ?>> STRIATED_ORES_OVERWORLD = register(
+                                      ^
+    symbol:   class ConfiguredFeature
+    location: class AllConfiguredFeatures
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/AllConfiguredFeatures.java:14: error: cannot find symbol
+      public static final ResourceKey<ConfiguredFeature<?, ?>> STRIATED_ORES_NETHER = register("striated_ores_nether");
+                                      ^
+    symbol:   class ConfiguredFeature
+    location: class AllConfiguredFeatures
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/AllConfiguredFeatures.java:16: error: cannot find symbol
+      public static ResourceKey<ConfiguredFeature<?, ?>> register(String id) {
+                                ^
+    symbol:   class ConfiguredFeature
+    location: class AllConfiguredFeatures
+  src/main/java/com/zurrtum/create/mixin/FuelValuesMixin.java:6: error: cannot find symbol
+  import net.minecraft.world.level.block.entity.FuelValues;
+                                               ^
+    symbol:   class FuelValues
+    location: package net.minecraft.world.level.block.entity
+  src/main/java/com/zurrtum/create/mixin/FuelValuesMixin.java:13: error: cannot find symbol
+      private static FuelValues register(FuelValues.Builder builder, Operation<FuelValues> original) {
+                                                                               ^
+    symbol:   class FuelValues
+    location: class FuelValuesMixin
+  src/main/java/com/zurrtum/create/mixin/FuelValuesMixin.java:13: error: cannot find symbol
+      private static FuelValues register(FuelValues.Builder builder, Operation<FuelValues> original) {
+                     ^
+    symbol:   class FuelValues
+    location: class FuelValuesMixin
+  src/main/java/com/zurrtum/create/catnip/levelWrappers/SchematicChunkSource.java:21: error: cannot find symbol
+  import net.minecraft.world.item.alchemy.PotionBrewing;
+                                         ^
+    symbol:   class PotionBrewing
+    location: package net.minecraft.world.item.alchemy
+  src/main/java/com/zurrtum/create/catnip/levelWrappers/SchematicChunkSource.java:30: error: cannot find symbol
+  import net.minecraft.world.level.block.entity.FuelValues;
+                                               ^
+    symbol:   class FuelValues
+    location: package net.minecraft.world.level.block.entity
+  src/main/java/com/zurrtum/create/catnip/levelWrappers/SchematicChunkSource.java:198: error: cannot find symbol
+              public PotionBrewing potionBrewing() {
+                     ^
+    symbol:   class PotionBrewing
+    location: class DummyLevel
+  src/main/java/com/zurrtum/create/catnip/levelWrappers/SchematicChunkSource.java:203: error: cannot find symbol
+              public FuelValues fuelValues() {
+                     ^
+    symbol:   class FuelValues
+    location: class DummyLevel
+  src/main/java/com/zurrtum/create/content/trains/entity/Train.java:1225: error: cannot find symbol
+          FuelValues fuelRegistry = world.fuelValues();
+          ^
+    symbol:   class FuelValues
+    location: class Train
+  src/main/java/com/zurrtum/create/AllItemAttributeTypes.java:84: error: cannot find symbol
+          s -> ComposterBlock.COMPOSTABLES.containsKey(s.getItem())
+                             ^
+    symbol:   variable COMPOSTABLES
+    location: class ComposterBlock
+  src/main/java/com/zurrtum/create/content/kinetics/mixer/PotionRecipe.java:64: error: cannot find symbol
+          PotionBrewing potionBrewing = PotionBrewing.bootstrap(data.enabledFeatures);
+          ^
+    symbol:   class PotionBrewing
+    location: class PotionRecipe
+  src/main/java/com/zurrtum/create/content/kinetics/mixer/PotionRecipe.java:64: error: cannot find symbol
+          PotionBrewing potionBrewing = PotionBrewing.bootstrap(data.enabledFeatures);
+                                        ^
+    symbol:   variable PotionBrewing
+    location: class PotionRecipe
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/LayerPattern.java:129: error: cannot find symbol
+                      targets.add(ImmutableList.of(OreConfiguration.target(
+                                                   ^
+    symbol:   variable OreConfiguration
+    location: class Builder
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/LayerPattern.java:151: error: cannot find symbol
+                      OreConfiguration.target(STONE_ORE_REPLACEABLES, stone),
+                      ^
+    symbol:   variable OreConfiguration
+    location: class Builder
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/LayerPattern.java:152: error: cannot find symbol
+                      OreConfiguration.target(DEEPSLATE_ORE_REPLACEABLES, deepslate)
+                      ^
+    symbol:   variable OreConfiguration
+    location: class Builder
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/AllFeatures.java:15: error: cannot find symbol
+          return Registry.register(BuiltInRegistries.FEATURE, Identifier.fromNamespaceAndPath(MOD_ID, name), feature);
+                                                    ^
+    symbol:   variable FEATURE
+    location: class BuiltInRegistries
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/AllConfiguredFeatures.java:17: error: cannot find symbol
+          return ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath(MOD_ID, id));
+                                              ^
+    symbol:   variable CONFIGURED_FEATURE
+    location: class Registries
+  src/main/java/com/zurrtum/create/catnip/nbt/NBTProcessors.java:46: error: cannot find symbol
+              SignText text = data.getCompound(key).flatMap(k -> CatnipCodecUtils.decode(SignText.DIRECT_CODEC, k))
+                                                                                                 ^
+    symbol:   variable DIRECT_CODEC
+    location: class SignText
+  src/main/java/com/zurrtum/create/content/equipment/sandPaper/SandPaperItem.java:200: error: cannot find symbol
+          Optional<BlockState> newState = ((AxeItem) Items.DIAMOND_AXE).getStripped(state);
+                                            ^
+    symbol:   class AxeItem
+    location: class SandPaperItem
+  Note: Recompile with -Xlint:unchecked for details.
+  Note: Some input files use or override a deprecated API.
+  src/main/java/com/zurrtum/create/catnip/levelWrappers/WrappedLevel.java:307: error: method does not override or implement a method from a supertype
+      @Override
+      ^
+  src/main/java/com/zurrtum/create/catnip/levelWrappers/WrappedLevel.java:312: error: method does not override or implement a method from a supertype
+      @Override
+      ^
+  src/main/java/com/zurrtum/create/foundation/pack/EmptyJsonOps.java:28: error: method does not override or implement a method from a supertype
+      @Override
+      ^
+  src/main/java/com/zurrtum/create/infrastructure/player/FakePlayerEntity.java:54: error: method does not override or implement a method from a supertype
+      @Override
+      ^
+  src/main/java/com/zurrtum/create/infrastructure/player/FakePlayerEntity.java:64: error: method does not override or implement a method from a supertype
+      @Override
+      ^
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/LayeredOreFeature.java:34: error: method does not override or implement a method from a supertype
+      @Override
+      ^
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/ConfigPlacementFilter.java:15: error: method does not override or implement a method from a supertype
+      @Override
+      ^
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/ConfigPlacementFilter.java:20: error: method does not override or implement a method from a supertype
+      @Override
+      ^
+  src/main/java/com/zurrtum/create/mixin/BuiltInPackSourceMixin.java:109: error: method does not override or implement a method from a supertype
+              @Override
+              ^
+  src/main/java/com/zurrtum/create/mixin/BuiltInPackSourceMixin.java:115: error: method does not override or implement a method from a supertype
+              @Override
+              ^
+  src/main/java/com/zurrtum/create/catnip/levelWrappers/SchematicChunkSource.java:197: error: method does not override or implement a method from a supertype
+              @Override
+              ^
+  src/main/java/com/zurrtum/create/catnip/levelWrappers/SchematicChunkSource.java:202: error: method does not override or implement a method from a supertype
+              @Override
+              ^
+  Note: Some input files use unchecked or unsafe operations.
+  src/main/java/com/zurrtum/create/content/trains/entity/Train.java:1225: error: cannot find symbol
+          FuelValues fuelRegistry = world.fuelValues();
+                                         ^
+    symbol:   method fuelValues()
+    location: variable world of type Level
+  src/main/java/com/zurrtum/create/catnip/levelWrappers/WrappedLevel.java:309: error: cannot find symbol
+          return level.potionBrewing();
+                      ^
+    symbol:   method potionBrewing()
+    location: variable level of type Level
+  src/main/java/com/zurrtum/create/catnip/levelWrappers/WrappedLevel.java:314: error: cannot find symbol
+          return level.fuelValues();
+                      ^
+    symbol:   method fuelValues()
+    location: variable level of type Level
+  src/main/java/com/zurrtum/create/AllItemAttributeTypes.java:60: error: cannot find symbol
+      public static final ItemAttributeType FURNACE_FUEL = singleton("furnace_fuel", (s, w) -> w.fuelValues().isFuel(s));
+                                                                                                ^
+    symbol:   method fuelValues()
+    location: variable w of type Level
+  src/main/java/com/zurrtum/create/content/processing/burner/BlazeBurnerBlockEntity.java:207: error: cannot find symbol
+              newBurnTime = level.fuelValues().burnDuration(itemStack);
+                                 ^
+    symbol:   method fuelValues()
+    location: variable level of type Level
+  src/main/java/com/zurrtum/create/foundation/recipe/ComponentsIngredient.java:75: error: cannot find symbol
+          for (Map.Entry<DataComponentType<?>, Optional<?>> entry : components.entrySet()) {
+                                                                              ^
+    symbol:   method entrySet()
+    location: variable components of type DataComponentPatch
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/LayeredOreFeature.java:127: error: cannot find symbol
+                          rampValue += layerDisplacementNoise.getValue(
+                                                             ^
+    symbol:   method getValue(float,float,float)
+    location: variable layerDisplacementNoise of type SimplexNoise
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/LayeredOreFeature.java:147: error: cannot find symbol
+                              (float) radiusNoise.getValue(
+                                                 ^
+    symbol:   method getValue(float,float,float)
+    location: variable radiusNoise of type SimplexNoise
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/LayeredOreFeature.java:227: error: cannot find symbol
+          return !isAdjacentToAir(pAdjacentStateAccessor, pMatablePos);
+                  ^
+    symbol:   method isAdjacentToAir(Function<BlockPos,BlockState>,MutableBlockPos)
+    location: class LayeredOreFeature
+  src/main/java/com/zurrtum/create/content/redstone/displayLink/target/SignDisplayTarget.java:37: error: cannot find symbol
+              signText = signText.map(st -> st.setMessage(iFinal + line, Component.literal(content)));
+                                              ^
+    symbol:   method setMessage(int,MutableComponent)
+    location: variable st of type SignText
+  src/main/java/com/zurrtum/create/infrastructure/player/FakePlayerEntity.java:55: error: startSleeping(BlockPos) in FakePlayerEntity cannot override startSleeping(BlockPos) in ServerPlayer
+      public void startSleeping(BlockPos pos) {
+                  ^
+    return type void is not compatible with boolean
+  src/main/java/com/zurrtum/create/mixin/BuiltInPackSourceMixin.java:108: error: <anonymous com.zurrtum.create.mixin.BuiltInPackSourceMixin$1> is not abstract and does not override abstract method openResources(PackLocationInfo,Metadata) in ResourcesSupplier
+          Pack.ResourcesSupplier packFactory = new Pack.ResourcesSupplier() {
+                                                                            ^
+  src/main/java/com/zurrtum/create/infrastructure/fluids/FluidStack.java:148: error: incompatible types: Reference2ObjectMap<DataComponentType<?>,Object> cannot be converted to Reference2ObjectMap<DataComponentType<?>,Optional<?>>
+              Reference2ObjectMap<DataComponentType<?>, Optional<?>> stackComponentMap = stackComponents.patch;
+                                                                                                        ^
+  src/main/java/com/zurrtum/create/infrastructure/fluids/FluidStack.java:149: error: incompatible types: Reference2ObjectMap<DataComponentType<?>,Object> cannot be converted to Reference2ObjectMap<DataComponentType<?>,Optional<?>>
+              Reference2ObjectMap<DataComponentType<?>, Optional<?>> otherStackComponentMap = otherStackComponents.patch;
+                                                                                                                  ^
+  src/main/java/com/zurrtum/create/infrastructure/items/ContainerExtension.java:328: error: incompatible types: Reference2ObjectMap<DataComponentType<?>,Object> cannot be converted to Reference2ObjectMap<DataComponentType<?>,Optional<?>>
+              Reference2ObjectMap<DataComponentType<?>, Optional<?>> stackComponentMap = stackComponents.patch;
+                                                                                                        ^
+  src/main/java/com/zurrtum/create/infrastructure/items/ContainerExtension.java:329: error: incompatible types: Reference2ObjectMap<DataComponentType<?>,Object> cannot be converted to Reference2ObjectMap<DataComponentType<?>,Optional<?>>
+              Reference2ObjectMap<DataComponentType<?>, Optional<?>> otherStackComponentMap = otherStackComponents.patch;
+                                                                                                                  ^
+  src/main/java/com/zurrtum/create/content/processing/sequenced/SequencedAssemblyRecipe.java:95: error: incompatible types: Codec<List<Holder<Recipe<?>>>> cannot be converted to Codec<List<Recipe<?>>>
+          private static final Codec<List<Recipe<?>>> RECIPE_CODEC = CODEC.listOf();
+                                                                                 ^
+  src/main/java/com/zurrtum/create/content/processing/sequenced/SequencedAssemblyRecipe.java:142: error: incompatible types: cannot infer type arguments for Reference2ObjectArrayMap<>
+                  Reference2ObjectMap<DataComponentType<?>, Optional<?>> transitionalComponents = new Reference2ObjectArrayMap<>(
+                                                                                                                              ^
+      reason: inference variable V has incompatible equality constraints Optional<?>,Object
+    where V is a type-variable:
+      V extends Object declared in class Reference2ObjectArrayMap
+  src/main/java/com/zurrtum/create/content/processing/sequenced/SequencedAssemblyRecipe.java:147: error: incompatible types: Reference2ObjectMap<DataComponentType<?>,Optional<?>> cannot be converted to Reference2ObjectMap<DataComponentType<?>,Object>
+                      new DataComponentPatch(transitionalComponents)
+                                             ^
+  src/main/java/com/zurrtum/create/content/processing/sequenced/SequencedAssemblyRecipe.java:212: error: incompatible types: Holder<Recipe<?>> cannot be converted to Recipe<?>
+                      Recipe<?> recipe = CODEC.parse(ops, object).getOrThrow();
+                                                                            ^
+  src/main/java/com/zurrtum/create/content/logistics/packager/PackagerBlockEntity.java:648: error: incompatible types: boolean cannot be converted to SignTextSlot
+              SignText text = sign.getText(front);
+                                           ^
+  src/main/java/com/zurrtum/create/foundation/pack/RuntimeDataGenerator.java:197: error: incompatible types: CuttingRecipe cannot be converted to Holder<Recipe<?>>
+                  EmptyJsonOps.INSTANCE, new CuttingRecipe(
+                                         ^
+  src/main/java/com/zurrtum/create/foundation/pack/RuntimeDataGenerator.java:228: error: incompatible types: Recipe<CAP#1> cannot be converted to Holder<Recipe<?>>
+          Recipe.CODEC.encodeStart(JsonOps.INSTANCE, recipe).ifSuccess(json -> {
+                                                     ^
+    where CAP#1 is a fresh type-variable:
+      CAP#1 extends RecipeInput from capture of ?
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/LayerPattern.java:113: error: incompatible types: cannot infer type arguments for ArrayList<>
+              private final List<List<OreConfiguration.TargetBlockState>> targets = new ArrayList<>();
+                                                                                                 ^
+      reason: inferred type does not conform to equality constraint(s)
+        inferred: Object
+        equality constraints(s): List<TargetBlockState>
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/AllPlacementModifiers.java:19: error: incompatible types: cannot infer type-variable(s) V,T
+          return Registry.register(
+                                  ^
+      (argument mismatch; MapCodec is not a functional interface)
+    where V,T are type-variables:
+      V extends Object declared in method <V,T>register(Registry<V>,Identifier,T)
+      T extends V declared in method <V,T>register(Registry<V>,Identifier,T)
+  src/main/java/com/zurrtum/create/catnip/nbt/NBTProcessors.java:47: error: incompatible types: Object cannot be converted to SignText
+                  .orElse(null);
+                         ^
+  src/main/java/com/zurrtum/create/content/redstone/displayLink/target/SignDisplayTarget.java:25: error: incompatible types: invalid method reference
+          Couple<SignText> signText = Couple.createWithContext(sign::getText);
+                                                               ^
+      incompatible types: Boolean cannot be converted to SignTextSlot
+  src/main/java/com/zurrtum/create/content/redstone/displayLink/target/SignDisplayTarget.java:42: error: incompatible types: invalid method reference
+              signText.forEachWithContext(sign::setText);
+                                          ^
+      incompatible types: Boolean cannot be converted to SignTextSlot
+  src/main/java/com/zurrtum/create/AllBlocks.java:534: error: incompatible types: invalid method reference
+              .isSuffocating(Blocks::never).isViewBlocking(Blocks::never).mapColor(MapColor.COLOR_GRAY)
+                                                           ^
+      incompatible types: AABB cannot be converted to EntityType<?>
+  src/main/java/com/zurrtum/create/AllBlocks.java:545: error: incompatible types: invalid method reference
+              .isSuffocating(Blocks::never).isViewBlocking(Blocks::never).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)
+                                                           ^
+      incompatible types: AABB cannot be converted to EntityType<?>
+  src/main/java/com/zurrtum/create/AllBlocks.java:1103: error: incompatible types: invalid method reference
+              .isSuffocating(Blocks::never).isViewBlocking(Blocks::never).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)
+                                                           ^
+      incompatible types: AABB cannot be converted to EntityType<?>
+  src/main/java/com/zurrtum/create/AllBlocks.java:1241: error: incompatible types: invalid method reference
+              .isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
+                                                           ^
+      incompatible types: AABB cannot be converted to EntityType<?>
+  src/main/java/com/zurrtum/create/AllBlocks.java:1247: error: incompatible types: invalid method reference
+              .isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
+                                                           ^
+      incompatible types: AABB cannot be converted to EntityType<?>
+  src/main/java/com/zurrtum/create/AllBlocks.java:1253: error: incompatible types: invalid method reference
+              .isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
+                                                           ^
+      incompatible types: AABB cannot be converted to EntityType<?>
+  src/main/java/com/zurrtum/create/AllBlocks.java:1279: error: incompatible types: invalid method reference
+              .isRedstoneConductor(Blocks::never).isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
+                                                                                              ^
+      incompatible types: AABB cannot be converted to EntityType<?>
+  src/main/java/com/zurrtum/create/AllBlocks.java:1285: error: incompatible types: invalid method reference
+              .isRedstoneConductor(Blocks::never).isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
+                                                                                              ^
+      incompatible types: AABB cannot be converted to EntityType<?>
+  src/main/java/com/zurrtum/create/AllBlocks.java:1291: error: incompatible types: invalid method reference
+              .isRedstoneConductor(Blocks::never).isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
+                                                                                              ^
+      incompatible types: AABB cannot be converted to EntityType<?>
+  src/main/java/com/zurrtum/create/AllBlocks.java:1297: error: incompatible types: invalid method reference
+              .isRedstoneConductor(Blocks::never).isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
+                                                                                              ^
+      incompatible types: AABB cannot be converted to EntityType<?>
+  src/main/java/com/zurrtum/create/AllBlocks.java:1303: error: incompatible types: invalid method reference
+              .isRedstoneConductor(Blocks::never).isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
+                                                                                              ^
+      incompatible types: AABB cannot be converted to EntityType<?>
+  src/main/java/com/zurrtum/create/AllBlocks.java:1309: error: incompatible types: invalid method reference
+              .isRedstoneConductor(Blocks::never).isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
+                                                                                              ^
+      incompatible types: AABB cannot be converted to EntityType<?>
+  src/main/java/com/zurrtum/create/AllBlocks.java:1315: error: incompatible types: invalid method reference
+              .isRedstoneConductor(Blocks::never).isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
+                                                                                              ^
+      incompatible types: AABB cannot be converted to EntityType<?>
+  src/main/java/com/zurrtum/create/AllBlocks.java:1321: error: incompatible types: invalid method reference
+              .isRedstoneConductor(Blocks::never).isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
+                                                                                              ^
+      incompatible types: AABB cannot be converted to EntityType<?>
+  src/main/java/com/zurrtum/create/AllBlocks.java:1327: error: incompatible types: invalid method reference
+              .isRedstoneConductor(Blocks::never).isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
+                                                                                              ^
+      incompatible types: AABB cannot be converted to EntityType<?>
+  src/main/java/com/zurrtum/create/AllBlocks.java:1333: error: incompatible types: invalid method reference
+              .isRedstoneConductor(Blocks::never).isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
+                                                                                              ^
+      incompatible types: AABB cannot be converted to EntityType<?>
+  src/main/java/com/zurrtum/create/AllBlocks.java:1339: error: incompatible types: invalid method reference
+              .isRedstoneConductor(Blocks::never).isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
+                                                                                              ^
+      incompatible types: AABB cannot be converted to EntityType<?>
+  Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/LayeredOreConfiguration.java:9: error: cannot find symbol
+  public class LayeredOreConfiguration implements FeatureConfiguration {
+                                                  ^
+    symbol: class FeatureConfiguration
+  src/main/java/com/zurrtum/create/mixin/FuelValuesMixin.java:10: error: cannot find symbol
+  @Mixin(FuelValues.class)
+         ^
+    symbol: class FuelValues
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/LayerPattern.java:12: error: package net.minecraft.world.level.levelgen.feature.configurations does not exist
+  import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
+                                                                  ^
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/LayerPattern.java:113: error: package OreConfiguration does not exist
+              private final List<List<OreConfiguration.TargetBlockState>> targets = new ArrayList<>();
+                                                      ^
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/LayerPattern.java:89: error: package OreConfiguration does not exist
+          public final List<List<OreConfiguration.TargetBlockState>> targets;
+                                                 ^
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/LayerPattern.java:94: error: package OreConfiguration does not exist
+          public Layer(List<List<OreConfiguration.TargetBlockState>> targets, int minSize, int maxSize, int weight) {
+                                                 ^
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/LayerPattern.java:101: error: package OreConfiguration does not exist
+          public List<OreConfiguration.TargetBlockState> rollBlock(RandomSource random) {
+                                      ^
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/LayeredOreConfiguration.java:5: error: package net.minecraft.world.level.levelgen.feature.configurations does not exist
+  import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+                                                                  ^
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/AllFeatures.java:7: error: package net.minecraft.world.level.levelgen.feature.configurations does not exist
+  import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+                                                                  ^
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/LayeredOreFeature.java:15: error: package net.minecraft.world.level.levelgen.feature.configurations does not exist
+  import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
+                                                                  ^
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/LayeredOreFeature.java:217: error: package OreConfiguration does not exist
+          OreConfiguration.TargetBlockState pTargetState,
+                          ^
+  src/main/java/com/zurrtum/create/mixin/FuelValuesMixin.java:13: error: package FuelValues does not exist
+      private static FuelValues register(FuelValues.Builder builder, Operation<FuelValues> original) {
+                                                   ^
+  src/main/java/com/zurrtum/create/content/kinetics/mixer/PotionRecipe.java:77: error: package PotionBrewing does not exist
+              for (PotionBrewing.Mix<Potion> mix : potionBrewing.potionMixes) {
+                                ^
+  src/main/java/com/zurrtum/create/content/kinetics/mixer/PotionRecipe.java:92: error: package PotionBrewing does not exist
+          for (PotionBrewing.Mix<Item> mix : potionBrewing.containerMixes) {
+                            ^
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/LayerPattern.java:82: error: package OreConfiguration does not exist
+              Codec.list(Codec.list(OreConfiguration.TargetBlockState.CODEC)).fieldOf("targets")
+                                                    ^
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/LayeredOreFeature.java:159: error: package OreConfiguration does not exist
+                          List<OreConfiguration.TargetBlockState> targetBlockStates = layer.rollBlock(random);
+                                               ^
+  src/main/java/com/zurrtum/create/infrastructure/worldgen/LayeredOreFeature.java:175: error: package OreConfiguration does not exist
+                          for (OreConfiguration.TargetBlockState targetBlockState : targetBlockStates) {
+                                               ^
+  119 errors
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+==============================================================================
+
+2: Task failed with an exception.
+-----------
+* What went wrong:
+Execution failed for task ':validateAccessWidener' (registered by plugin 'fabric-loom').
+> access-widener validation failed for create.classtweaker
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+> Get more help at https://help.gradle.org.
+==============================================================================
+
+BUILD FAILED in 1m 5s
+6 actionable tasks: 6 executed
