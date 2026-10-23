@@ -59,12 +59,13 @@ public class MixerVisual extends SingleAxisRotatingVisual<MechanicalMixerBlockEn
     }
 
     private void transformHead(float renderedHeadOffset, float pt) {
+        // Flywheel can build the visual before the block entity's first client tick adds its client behaviours
         MechanicalMixerAnimationBehaviour behaviour = (MechanicalMixerAnimationBehaviour) blockEntity.getBehaviour(
             AnimationBehaviour.TYPE);
         float speed = blockEntity.getSpeed();
         mixerHead.setPosition(getVisualPosition()).nudge(0, renderedHeadOffset, 0)
             .setRotationalSpeed(speed * RotatingInstance.SPEED_MULTIPLIER)
-            .setRotationOffset(behaviour.getOffset(speed, pt)).setChanged();
+            .setRotationOffset(behaviour == null ? 0 : behaviour.getOffset(speed, pt)).setChanged();
     }
 
     private void transformPole(float renderedHeadOffset) {

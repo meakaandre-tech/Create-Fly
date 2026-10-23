@@ -63,7 +63,9 @@ public class MechanicalMixerRenderer implements BlockEntityRenderer<MechanicalMi
             .cardinalLighting(cardinalLighting).light(state.lightCoords).extractRenderState();
         MechanicalMixerAnimationBehaviour behaviour = (MechanicalMixerAnimationBehaviour) be.getBehaviour(
             AnimationBehaviour.TYPE);
-        state.headAngle = getRotateAngle(progress, behaviour.getOffset(speed, tickProgress), Direction.UP);
+        // null until the block entity's first client tick has added its client behaviours
+        float headOffset = behaviour == null ? 0 : behaviour.getOffset(speed, tickProgress);
+        state.headAngle = getRotateAngle(progress, headOffset, Direction.UP);
     }
 
     public static float getRenderedHeadOffset(MechanicalMixerBlockEntity be, float partialTicks) {
