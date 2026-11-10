@@ -33,6 +33,10 @@ public final class Materials {
         .texture(TextureAtlas.LOCATION_ITEMS).transparency(Transparency.TRANSLUCENT).cutout(CutoutShaders.ONE_TENTH)
         .mipmap(false).build();
 
+    @SuppressWarnings("deprecation")
+    public static final Material CUTOUT_ITEM_ENTITY_ITEM = SimpleMaterial.builder().texture(TextureAtlas.LOCATION_ITEMS)
+        .cutout(CutoutShaders.ONE_TENTH).mipmap(false).build();
+
     private Materials() {
     }
 }

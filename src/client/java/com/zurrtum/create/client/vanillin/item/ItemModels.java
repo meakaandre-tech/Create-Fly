@@ -54,7 +54,8 @@ public class ItemModels {
         Minecraft mc = Minecraft.getInstance();
         ItemStackRenderState state = objects.state;
         mc.getItemModelResolver().updateForTopItem(state, stack, context, mc.level, null, 0);
-        boolean support = !state.isAnimated();
+        // 26.3 bakes only an item's plain quads: one with a special renderer or a glint is left to vanilla
+        boolean support = !state.isAnimated() && BakedItemModelBufferer.canBuffer(state);
         objects.cache.put(stack.copy(), support);
         return support;
     }

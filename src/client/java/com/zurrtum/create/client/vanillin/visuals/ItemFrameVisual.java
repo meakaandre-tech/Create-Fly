@@ -101,7 +101,10 @@ public class ItemFrameVisual extends AbstractVisual implements EntityVisual<Item
             lastFrameModel = frameLocation;
         }
 
-        frame.setVisible(!invisible);
+        // a frame whose item Vanillin can't bake is drawn by vanilla instead (see skipVanillaRender)
+        boolean drawn = shouldVisualize(entity);
+        frame.setVisible(drawn && !invisible);
+        item.setVisible(drawn);
 
         frame.setTransform(baseTransform).translate(-0.5f, -0.5f, -0.5f).light(light).setChanged();
 

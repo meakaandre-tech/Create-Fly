@@ -1,38 +1,55 @@
 package com.zurrtum.create.client.flywheel.lib.model.baked;
 
-import com.mojang.renderpearl.api.pipeline.BlendFunction;
 import com.mojang.blaze3d.vertex.MeshData;
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.QuadInstance;
 import com.zurrtum.create.client.flywheel.api.material.Material;
-import com.zurrtum.create.client.flywheel.api.material.Transparency;
 import com.zurrtum.create.client.flywheel.api.model.Mesh;
+import com.zurrtum.create.client.flywheel.lib.material.Materials;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Font;
+import net.minecraft.client.model.Model;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.renderer.OrderedSubmitNodeCollector;
 import net.minecraft.client.renderer.Sheets;
+import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.block.BlockAndTintGetter;
+import net.minecraft.client.renderer.block.MovingBlockRenderState;
+import net.minecraft.client.renderer.block.dispatch.BlockStateModelPart;
+import net.minecraft.client.renderer.entity.state.EntityRenderState;
+import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
+import net.minecraft.client.renderer.gizmos.DrawableGizmoPrimitives;
 import net.minecraft.client.renderer.item.ItemStackRenderState;
 import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
+import net.minecraft.client.renderer.state.level.CameraRenderState;
+import net.minecraft.client.renderer.state.level.QuadParticleRenderState;
+import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.client.renderer.texture.UvMapping;
+import net.minecraft.client.resources.model.geometry.BakedQuad;
+import net.minecraft.client.resources.model.geometry.ItemQuads;
+import net.minecraft.network.chat.Component;
+import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import org.joml.Quaternionf;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Bakes an item stack's model into meshes. 26.3 items no longer draw through a buffer source, so the stack's render
+ * state is submitted to a collector that keeps its plain item quads. An item that submits anything else (a special
+ * renderer's model, a glint, an outline) can't be baked: {@link #canBuffer} says so, and it is left to vanilla.
+ */
 public class BakedItemModelBufferer {
-    static final Map<BlendFunction, Transparency> TRANSPARENCY = Map.of(
-        BlendFunction.ADDITIVE,
-        Transparency.ADDITIVE,
-        BlendFunction.LIGHTNING,
-        Transparency.LIGHTNING,
-        BlendFunction.GLINT,
-        Transparency.GLINT,
-        BlendFunction.TRANSLUCENT,
-        Transparency.TRANSLUCENT
-    );
     static final List<RenderType> CHUNK_LAYERS = List.of(
         Sheets.cutoutBlockItemSheet(),
+        Sheets.cutoutItemSheet(),
+        Sheets.translucentBlockItemSheet(),
         Sheets.translucentItemSheet()
     );
 
@@ -43,106 +60,37 @@ public class BakedItemModelBufferer {
         ResultConsumer resultConsumer,
         MeshResultConsumer meshResultConsumer
     ) {
-        //        ThreadLocalObjects objects = THREAD_LOCAL_OBJECTS.get();
-        //        PoseStack poseStack = objects.identityPoseStack;
-        //        ClientLevel world = level instanceof ClientLevel clientWorld ? clientWorld : null;
-        //        ItemMeshEmitterProvider provider = objects.provider;
-        //        provider.setResultConsumer(resultConsumer, meshResultConsumer);
-        //        ItemStackRenderState state = objects.state;
-        //        FeatureRenderDispatcher dispatcher = objects.featureRenderDispatcher;
-        //        Minecraft.getInstance().getItemModelResolver().updateForTopItem(state, stack, displayContext, world, null, 0);
-        //        state.submit(poseStack, dispatcher.getSubmitNodeStorage(), 0, OverlayTexture.NO_OVERLAY, 0);
-        //        dispatcher.renderAllFeatures();
-        //        provider.endBatch();
+        ThreadLocalObjects objects = THREAD_LOCAL_OBJECTS.get();
+        ClientLevel world = level instanceof ClientLevel clientWorld ? clientWorld : null;
+        ItemStackRenderState state = objects.state;
+        Minecraft.getInstance().getItemModelResolver().updateForTopItem(state, stack, displayContext, world, null, 0);
+        QuadCollector collector = objects.collector;
+        collector.begin(true);
+        for (ItemMeshEmitter emitter : objects.emitters) {
+            emitter.prepare(
+                resultConsumer,
+                (renderType, mesh, translucent) -> meshResultConsumer.accept(
+                    renderType,
+                    Materials.TRANSLUCENT_ITEM_ENTITY_ITEM,
+                    mesh,
+                    translucent
+                )
+            );
+        }
+        state.submit(new PoseStack(), collector, 0, OverlayTexture.NO_OVERLAY, 0);
+        for (ItemMeshEmitter emitter : objects.emitters) {
+            emitter.end();
+        }
+        state.clear();
     }
 
-    //    public static class ItemMeshEmitterProvider extends MultiBufferSource.BufferSource {
-    //        private final ThreadLocalObjects objects;
-    //        private ResultConsumer resultConsumer;
-    //        private MeshResultConsumer meshResultConsumer;
-    //
-    //        @SuppressWarnings("DataFlowIssue")
-    //        private ItemMeshEmitterProvider(ThreadLocalObjects objects) {
-    //            super(null, null);
-    //            this.objects = objects;
-    //        }
-    //
-    //        public void setResultConsumer(ResultConsumer resultConsumer, MeshResultConsumer meshResultConsumer) {
-    //            this.resultConsumer = resultConsumer;
-    //            this.meshResultConsumer = meshResultConsumer;
-    //        }
-    //
-    //        private void emitMesh(RenderType renderType, Mesh mesh, boolean translucent) {
-    //            Material material = objects.materials.computeIfAbsent(renderType, ItemMeshEmitterProvider::createMaterial);
-    //            meshResultConsumer.accept(renderType, material, mesh, translucent);
-    //        }
-    //
-    //        private static Material createMaterial(RenderType renderLayer) {
-    //            RenderSetup state = renderLayer.state;
-    //            Map<String, RenderSetup.TextureBinding> textures = state.textures;
-    //            RenderSetup.TextureBinding texture = textures.get("Sampler0");
-    //            if (texture != null) {
-    //                SimpleMaterial.Builder builder = SimpleMaterial.builder().texture(texture.location()).mipmap(false);
-    //                if (!state.useLightmap) {
-    //                    builder.useLight(false);
-    //                }
-    //                if (!state.useOverlay) {
-    //                    builder.useOverlay(false);
-    //                }
-    //                RenderPipeline pipeline = renderLayer.pipeline();
-    //                Optional<BlendFunction> blendFunction = pipeline.getColorTargetState().blendFunction();
-    //                if (blendFunction.isPresent()) {
-    //                    Transparency transparency = TRANSPARENCY.get(blendFunction.get());
-    //                    if (transparency != null) {
-    //                        builder.transparency(transparency);
-    //                    }
-    //                }
-    //                String cutout = pipeline.getShaderDefines().values().get("ALPHA_CUTOUT");
-    //                if (cutout != null) {
-    //                    if (cutout.equals("0.1")) {
-    //                        builder.cutout(CutoutShaders.ONE_TENTH);
-    //                    } else if (cutout.equals("0.5")) {
-    //                        builder.cutout(CutoutShaders.HALF);
-    //                    }
-    //                }
-    //                return builder.build();
-    //            }
-    //            return Materials.TRANSLUCENT_ITEM_ENTITY_ITEM;
-    //        }
-    //
-    //        @Override
-    //        public VertexConsumer getBuffer(RenderType layer) {
-    //            Integer index = objects.chunkLayers.get(layer);
-    //            ItemMeshEmitter emitter;
-    //            if (index == null) {
-    //                objects.chunkLayers.put(layer, objects.chunkLayers.size());
-    //                emitter = new ItemMeshEmitter(layer);
-    //                emitter.prepare(resultConsumer, this::emitMesh);
-    //                objects.emitters.add(emitter);
-    //            } else {
-    //                emitter = objects.emitters.get(index);
-    //                if (emitter.isEnd()) {
-    //                    emitter.prepare(resultConsumer, this::emitMesh);
-    //                }
-    //            }
-    //            return emitter;
-    //        }
-    //
-    //        @Override
-    //        public void endBatch() {
-    //            for (ItemMeshEmitter emitter : objects.emitters) {
-    //                emitter.end();
-    //            }
-    //        }
-    //
-    //        @Override
-    //        public void endLastBatch() {
-    //        }
-    //
-    //        @Override
-    //        public void endBatch(RenderType type) {
-    //        }
-    //    }
+    /** True if everything the given (already updated) render state draws is plain item quads that can be baked. */
+    public static boolean canBuffer(ItemStackRenderState state) {
+        QuadCollector collector = THREAD_LOCAL_OBJECTS.get().collector;
+        collector.begin(false);
+        state.submit(new PoseStack(), collector, 0, OverlayTexture.NO_OVERLAY, 0);
+        return collector.bakeable;
+    }
 
     public interface ResultConsumer {
         void accept(RenderType renderType, boolean shaded, MeshData data);
@@ -160,26 +108,12 @@ public class BakedItemModelBufferer {
     }
 
     private static class ThreadLocalObjects {
-        public final PoseStack identityPoseStack = new PoseStack();
         public final ItemStackRenderState state = new ItemStackRenderState();
-        //        public final ItemMeshEmitterProvider provider = new ItemMeshEmitterProvider(this);
-        public final Map<RenderType, Material> materials = new HashMap<>();
         public final Map<RenderType, Integer> chunkLayers = new HashMap<>();
         public final List<ItemMeshEmitter> emitters = new ArrayList<>();
-        //        public final FeatureRenderDispatcher featureRenderDispatcher;
+        public final QuadCollector collector = new QuadCollector(this);
 
         {
-            Minecraft mc = Minecraft.getInstance();
-            //            featureRenderDispatcher = new FeatureRenderDispatcher(
-            //                new SubmitNodeStorage(),
-            //                mc.getModelManager(),
-            //                provider,
-            //                mc.getAtlasManager(),
-            //                EmptyOutlineBufferSource.INSTANCE,
-            //                EmptyBufferSource.INSTANCE,
-            //                mc.font,
-            //                mc.gameRenderer.gameRenderState()
-            //            );
             for (int i = 0, size = CHUNK_LAYERS.size(); i < size; i++) {
                 RenderType renderType = CHUNK_LAYERS.get(i);
                 chunkLayers.put(renderType, i);
@@ -188,46 +122,207 @@ public class BakedItemModelBufferer {
         }
     }
 
-    //    private static class EmptyOutlineBufferSource extends OutlineBufferSource {
-    //        public static final EmptyOutlineBufferSource INSTANCE = new EmptyOutlineBufferSource();
-    //
-    //        @Override
-    //        public VertexConsumer getBuffer(RenderType renderType) {
-    //            return EmptyVertexConsumer.INSTANCE;
-    //        }
-    //
-    //        @Override
-    //        public void setColor(int color) {
-    //        }
-    //
-    //        @Override
-    //        public void endOutlineBatch() {
-    //        }
-    //    }
+    /** Keeps the plain item quads a render state submits; anything else marks the item as not bakeable. */
+    private static class QuadCollector implements SubmitNodeCollector {
+        private final ThreadLocalObjects objects;
+        private final QuadInstance quadInstance = new QuadInstance();
+        private boolean emit;
+        boolean bakeable;
 
-    //    private static class EmptyBufferSource extends MultiBufferSource.BufferSource {
-    //        public static final EmptyBufferSource INSTANCE = new EmptyBufferSource();
-    //
-    //        @SuppressWarnings("DataFlowIssue")
-    //        public EmptyBufferSource() {
-    //            super(null, null);
-    //        }
-    //
-    //        @Override
-    //        public VertexConsumer getBuffer(RenderType renderType) {
-    //            return EmptyVertexConsumer.INSTANCE;
-    //        }
-    //
-    //        @Override
-    //        public void endLastBatch() {
-    //        }
-    //
-    //        @Override
-    //        public void endBatch() {
-    //        }
-    //
-    //        @Override
-    //        public void endBatch(RenderType type) {
-    //        }
-    //    }
+        QuadCollector(ThreadLocalObjects objects) {
+            this.objects = objects;
+        }
+
+        void begin(boolean emit) {
+            this.emit = emit;
+            bakeable = true;
+        }
+
+        @Override
+        public void submitItem(
+            PoseStack poseStack,
+            ItemDisplayContext displayContext,
+            int lightCoords,
+            int overlayCoords,
+            int outlineColor,
+            int[] tintLayers,
+            ItemQuads quads,
+            ItemStackRenderState.FoilType foilType
+        ) {
+            if (foilType != ItemStackRenderState.FoilType.NONE || outlineColor != 0) {
+                bakeable = false;
+            }
+            quadInstance.setLightCoords(lightCoords);
+            quadInstance.setOverlayCoords(overlayCoords);
+            for (BakedQuad quad : quads.all()) {
+                BakedQuad.MaterialInfo info = quad.materialInfo();
+                Integer layer = objects.chunkLayers.get(info.itemRenderType());
+                if (layer == null) {
+                    bakeable = false;
+                    continue;
+                }
+                if (!emit) {
+                    continue;
+                }
+                int tint = info.tintIndex();
+                quadInstance.setColor(tint >= 0 && tint < tintLayers.length ? tintLayers[tint] : -1);
+                objects.emitters.get(layer).putBakedQuad(poseStack.last(), quad, quadInstance);
+            }
+        }
+
+        @Override
+        public OrderedSubmitNodeCollector order(int order) {
+            return this;
+        }
+
+        @Override
+        public void submitShadow(PoseStack poseStack, float radius, List<EntityRenderState.ShadowPiece> pieces) {
+            bakeable = false;
+        }
+
+        @Override
+        public void submitNameTag(
+            PoseStack poseStack,
+            Vec3 pos,
+            int offset,
+            Component name,
+            boolean seeThrough,
+            int lightCoords,
+            CameraRenderState camera
+        ) {
+            bakeable = false;
+        }
+
+        @Override
+        public void submitText(
+            PoseStack poseStack,
+            float x,
+            float y,
+            FormattedCharSequence text,
+            boolean dropShadow,
+            Font.DisplayMode displayMode,
+            int lightCoords,
+            int color,
+            int backgroundColor,
+            int outlineColor
+        ) {
+            bakeable = false;
+        }
+
+        @Override
+        public void submitTextBackground(
+            PoseStack poseStack,
+            float x0,
+            float y0,
+            float x1,
+            float y1,
+            int color,
+            Font.DisplayMode displayMode,
+            int lightCoords
+        ) {
+            bakeable = false;
+        }
+
+        @Override
+        public void submitFlame(PoseStack poseStack, EntityRenderState renderState, Quaternionf rotation) {
+            bakeable = false;
+        }
+
+        @Override
+        public void submitLeash(PoseStack poseStack, EntityRenderState.LeashState leashState) {
+            bakeable = false;
+        }
+
+        @Override
+        public <S> void submitModel(
+            Model<? super S> model,
+            S renderState,
+            PoseStack poseStack,
+            RenderType renderType,
+            int lightCoords,
+            int overlayCoords,
+            int tintedColor,
+            UvMapping uvMapping,
+            int outlineColor
+        ) {
+            bakeable = false;
+        }
+
+        @Override
+        public <S> void submitCrumblingOverlay(
+            Model<? super S> model,
+            S renderState,
+            PoseStack poseStack,
+            RenderType renderType,
+            int lightCoords,
+            int overlayCoords,
+            int tintedColor,
+            ModelFeatureRenderer.CrumblingOverlay crumblingOverlay
+        ) {
+            bakeable = false;
+        }
+
+        @Override
+        public void submitMovingBlock(PoseStack poseStack, MovingBlockRenderState movingBlockRenderState, int order) {
+            bakeable = false;
+        }
+
+        @Override
+        public void submitBlockModel(
+            PoseStack poseStack,
+            RenderType renderType,
+            List<BlockStateModelPart> parts,
+            int[] tintLayers,
+            int lightCoords,
+            int overlayCoords,
+            int outlineColor
+        ) {
+            bakeable = false;
+        }
+
+        @Override
+        public void submitBreakingBlockModel(
+            PoseStack poseStack,
+            List<BlockStateModelPart> parts,
+            int progress,
+            boolean flag
+        ) {
+            bakeable = false;
+        }
+
+        @Override
+        public void submitShapeOutline(
+            PoseStack poseStack,
+            VoxelShape shape,
+            RenderType renderType,
+            int color,
+            float width,
+            boolean flag
+        ) {
+            bakeable = false;
+        }
+
+        @Override
+        public void submitCustomGeometry(
+            PoseStack poseStack,
+            RenderType renderType,
+            SubmitNodeCollector.CustomGeometryRenderer renderer
+        ) {
+            bakeable = false;
+        }
+
+        @Override
+        public void submitQuadParticleGroup(QuadParticleRenderState particles) {
+            bakeable = false;
+        }
+
+        @Override
+        public void submitGizmoPrimitives(
+            DrawableGizmoPrimitives.Group group,
+            CameraRenderState camera,
+            boolean flag
+        ) {
+            bakeable = false;
+        }
+    }
 }
