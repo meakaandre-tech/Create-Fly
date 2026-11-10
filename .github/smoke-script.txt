@@ -139,6 +139,27 @@ shot
 cmd tp @a 2.5 121 6.2 180 -20
 sleep 4
 shot
+cmd say == item frames and item displays (Vanillin)
+cmd fill 28 140 2 36 144 2 minecraft:stone
+cmd fill 28 141 3 36 145 9 minecraft:air
+cmd fill 27 140 3 37 140 10 minecraft:stone
+cmd summon minecraft:item_frame 29 141 3 {block_pos:[I;29,141,3],Facing:3b,Fixed:1b,Item:{id:"minecraft:iron_ingot",count:1}}
+cmd summon minecraft:item_frame 31 141 3 {block_pos:[I;31,141,3],Facing:3b,Fixed:1b,Item:{id:"minecraft:stone",count:1}}
+cmd summon minecraft:item_frame 33 141 3 {block_pos:[I;33,141,3],Facing:3b,Fixed:1b,Item:{id:"minecraft:white_stained_glass",count:1}}
+cmd summon minecraft:item_frame 35 141 3 {block_pos:[I;35,141,3],Facing:3b,Fixed:1b,Item:{id:"minecraft:chest",count:1}}
+cmd summon minecraft:glow_item_frame 29 143 3 {block_pos:[I;29,143,3],Facing:3b,Fixed:1b,Item:{id:"minecraft:gold_ingot",count:1}}
+cmd summon minecraft:item_frame 31 143 3 {block_pos:[I;31,143,3],Facing:3b,Fixed:1b,Tags:["late"]}
+cmd summon minecraft:item_display 33.5 143.5 3.4 {item:{id:"minecraft:diamond",count:1}}
+cmd summon minecraft:item_display 35.5 143.5 3.4 {item:{id:"create:andesite_casing",count:1}}
+cmd tp @a 32 141 8.5 180 -8
+sleep 5
+cmd data merge entity @e[type=minecraft:item_frame,tag=late,limit=1] {Item:{id:"minecraft:emerald",count:1}}
+key F1
+sleep 4
+shot
+key F1
+cmd tp @a 2.5 121 6.2 180 -20
+sleep 3
 cmd say == inventory, ponder, creative tabs
 cmd item replace entity @a hotbar.0 with create:mechanical_press
 cmd item replace entity @a hotbar.1 with create:cogwheel

@@ -52,7 +52,8 @@ public class ItemDisplayVisual extends AbstractEntityVisual<Display.ItemDisplay>
             return;
         }
         var object = entity.itemRenderState();
-        if (object == null) {
+        // a display whose item Vanillin can't bake is drawn by vanilla instead (see skipVanillaRender)
+        if (object == null || !ItemModels.isSupported(object.itemStack(), object.itemTransform())) {
             instance.handle().setVisible(false);
             return;
         }
